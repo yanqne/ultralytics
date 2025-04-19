@@ -154,7 +154,7 @@ class Inference:
 
         if self.st.sidebar.button("Start"):
             stop_button = self.st.button("Stop")  # Button to stop the inference
-            cap = cv2.st.camera_input("Chụp ảnh từ webcam")  # Capture the video
+            cap = cv2.VideoCapture(self.vid_file_name)  # Capture the video
             if not cap.isOpened():
                 self.st.error("Could not open webcam or video source.")
                 return
@@ -183,7 +183,7 @@ class Inference:
                 self.ann_frame.image(annotated_frame, channels="BGR")  # Display processed frame
 
             cap.release()  # Release the capture
-        # cv2.destroyAllWindows()  # Destroy all OpenCV windows
+        cv2.destroyAllWindows()  # Destroy all OpenCV windows
 
 
 if __name__ == "__main__":
